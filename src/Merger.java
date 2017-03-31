@@ -30,8 +30,15 @@ public class Merger {
         for (File file : listOfFiles) {
             content += FileUtils.readFileToString(file) + "\n";
         }
-        try (PrintWriter out = new PrintWriter(WritePath)) {
-            out.append(content);
+        try
+        {
+            FileWriter fw = new FileWriter(WritePath, true); //the true will append the new data
+            fw.write(content + "\n");//appends the string to the file
+            fw.close();
+        }
+        catch(IOException ioe)
+        {
+            System.err.println("IOException: " + ioe.getMessage());
         }
         System.out.println(content);
     }
