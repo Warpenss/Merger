@@ -31,7 +31,7 @@ public class Merger {
             content += FileUtils.readFileToString(file) + "\n";
         }
         try (PrintWriter out = new PrintWriter(WritePath)) {
-            out.println(content);
+            out.append(content);
         }
         System.out.println(content);
     }
